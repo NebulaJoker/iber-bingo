@@ -1,0 +1,36 @@
+export const textList = [
+    "Cosplay de Zenless Zone Zero",
+    "Alguém de trela a ser passeado",
+    // "Fotografias sem consentimento",
+    "Fotografias sem permissão",
+    "Arte traced ou produtos do AliExpress",
+    "Problemas audiovisuais num dos palcos",
+    "Cosplay de Família",
+    // "Casal a comer-se sem querer saber dos outros",
+    "Casal a comer-se",
+    "Cosplayer de tronco nú",
+    "Posters NSFW",
+    // 'Grupo de moços solteiros com cartaz "Free Hugs"',
+    '"Free Hugs"',
+    "Cosplay de Miku País (qualquer país)",
+    // "Pessoas a gravar TikToks num canto qualquer",
+    "Pessoas a gravar TikToks num canto",
+    "Cosplay que gostem (Free Spot)",
+    "Música de Pokémon ou Dragon Ball GT",
+    // "Meet de Cosplayers no Círculo grande da Exponor",
+    "Meet de Cosplayers no círculo",
+    '"O Cheiro" tradicional',
+    "Pedaço de cosplay perdido no chão",
+    "Fursuit",
+    "Pessoa que foi chulada (sacos mistério)",
+    "Peça de roupa ahegao",
+    "Voluntariado que quer ir para casa",
+    "Alguém sentado no chão a comer noodles",
+    'André Manz a dizer "Sucesso!"',
+    "Selfie com a Mascote do IA",
+    "Ouvir o Para Para Dance fora do Para Para Dance",
+];
+
+export const squareCount = 25;
+
+export const stamp = "https://www.iberanime.com/wp-content/uploads/2024/01/logo_iberanime.svg";
