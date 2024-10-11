@@ -1,1 +1,1 @@
-{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/Components/Bingo.tsx","./src/Components/Filler.tsx"],"version":"5.6.3"}
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/bingo.tsx","./src/components/filler.tsx"],"version":"5.6.3"}

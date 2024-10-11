@@ -1,6 +1,6 @@
 {
     "name": "iber-bingo",
-    "private": true,
+    "private": false,
     "version": "0.0.0",
     "type": "module",
     "scripts": {
@@ -29,5 +29,5 @@
         "typescript-eslint": "^8.7.0",
         "vite": "^5.4.8"
     },
-    "homepage": "https://nebulajoker.github.io/iber-bingo"
+    "homepage": "https://bingo.nebulajoker.com"
 }

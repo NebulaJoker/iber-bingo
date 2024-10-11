@@ -55,7 +55,7 @@ function Bingo() {
                         JSON.stringify(new Array(25).fill(false))
                     );
                 }}
-                style={{ marginTop: "10px" }}
+                style={{ marginTop: "5px", color:"white" }}
             >
                 Reset
             </button>
