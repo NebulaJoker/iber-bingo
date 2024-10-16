@@ -1,23 +1,19 @@
 export const textList = [
     "Cosplay de Zenless Zone Zero",
     "Alguém de trela a ser passeado",
-    // "Fotografias sem consentimento",
     "Fotografias sem permissão",
     "Arte traced ou produtos do AliExpress",
     "Problemas audiovisuais num dos palcos",
     "Cosplay de Família",
-    // "Casal a comer-se sem querer saber dos outros",
     "Casal a comer-se",
     "Cosplayer de tronco nú",
     "Posters NSFW",
-    // 'Grupo de moços solteiros com cartaz "Free Hugs"',
     '"Free Hugs"',
     "Cosplay de Miku País (qualquer país)",
-    // "Pessoas a gravar TikToks num canto qualquer",
     "Pessoas a gravar TikToks num canto",
-    "Cosplay que gostem (Free Spot)",
+    // "Cosplay que gostem (Free Spot)",
     "Música de Pokémon ou Dragon Ball GT",
-    // "Meet de Cosplayers no Círculo grande da Exponor",
+    // IberAnime OPO exclusive
     "Meet de Cosplayers no círculo",
     '"O Cheiro" tradicional',
     "Pedaço de cosplay perdido no chão",
@@ -26,9 +22,16 @@ export const textList = [
     "Peça de roupa ahegao",
     "Voluntariado que quer ir para casa",
     "Alguém sentado no chão a comer noodles",
+    // IberAnime Exclusive
     'André Manz a dizer "Sucesso!"',
+    // IberAnime Exclusive
     "Selfie com a Mascote do IA",
+    // IberAnime Exclusive
     "Ouvir o Para Para Dance fora do Para Para Dance",
+    "Palavras japonesas não ironicamente",
+    "Cosplay engraçado fora da caixa",
+    "Jesus",
+    "Grupo grande de alguma coisa popular"
 ];
 
 export const squareCount = 25;

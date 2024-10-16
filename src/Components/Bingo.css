@@ -1,7 +1,16 @@
-.image-boundary{
+button {
+    color: "white";
+    border: 2px solid rgba(255, 255, 255, 0.60) !important;
+}
+
+button:first-child {
+    margin-right: 20px;
+}
+
+.image-boundary {
     margin: 5px 0px;
-    max-width:100vw;
-    max-height:100hw;
+    max-width: 100vw;
+    max-height: 100hw;
 }
 
 .parent {
@@ -181,13 +190,13 @@
 }
 
 @media only screen and (min-width: 768px) {
-    .parent{
+    .parent {
         max-width: 50%;
         max-height: 50%;
         margin: auto;
     }
 
-    .text-content{
+    .text-content {
         font-size: 14px;
     }
 }

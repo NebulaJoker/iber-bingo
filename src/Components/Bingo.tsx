@@ -1,30 +1,71 @@
 import { useState } from "react";
 import "./Bingo.css";
 import { textList, squareCount, stamp } from "./Filler";
-// import stampL from "../assets/logo_iberanime.svg";
 import banner from "../assets/bg.png";
 
 function Bingo() {
-    let bingoArray: Array<boolean> = [];
+    function shuffle(array: string[]): string[] {
+        let currentIndex = array.length;
 
-    try {
-        bingoArray = JSON.parse(localStorage.getItem("bingo")!).filter(
-            (val: boolean) => val == !!val
-        );
-        if (bingoArray.length !== 25) throw "Invalid backup array - resetting";
-    } catch {
-        bingoArray = new Array(squareCount).fill(false);
-        localStorage.setItem("bingo", JSON.stringify(bingoArray));
+        while (currentIndex != 0) {
+            const randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            [array[currentIndex], array[randomIndex]] = [
+                array[randomIndex],
+                array[currentIndex],
+            ];
+        }
+
+        return array;
     }
 
-    const [bingoArrayState, setBingoArray] =
-        useState<Array<boolean>>(bingoArray);
+    function generateArray(): [string, boolean][] {
+        const bingoArray: [string, boolean][] = new Array(squareCount);
 
-    const bingoArrayMapped = bingoArrayState.map((element, index) => (
+        const shuffled: string[] = shuffle(textList.slice(0));
+
+        for (let i = 0; i < squareCount; ++i) {
+            bingoArray[i] = [shuffled[i], false];
+        }
+
+        bingoArray[12][0] = "Cosplay que gostem (Free Spot)";
+
+        localStorage.setItem("bingoV2", JSON.stringify(bingoArray));
+
+        return bingoArray;
+    }
+
+    function loadLogicFromStorage(): [string, boolean][] {
+        try {
+            const bingoArray: [string, boolean][] = JSON.parse(
+                localStorage.getItem("bingoV2")!
+            );
+
+            if (
+                bingoArray.filter(
+                    (val) => textList.includes(val[0]) && val[1] === !!val[1]
+                ).length !== 25
+            )
+                throw "Invalid backup array - resetting";
+
+            return bingoArray;
+        } catch {
+            return generateArray();
+        }
+
+        return generateArray();
+    }
+
+    const [bingoArrayV2, setBingoArrayV2] = useState<[string, boolean][]>(
+        loadLogicFromStorage()
+    );
+
+    const bingoArrayMapped = bingoArrayV2.map((element, index) => (
         <div key={index} className={"div" + index + " inGrid"}>
             <Square
-                text={textList[index]}
-                completed={element}
+                text={element[0]}
+                completed={element[1]}
                 index={index}
                 cbFunc={(index: number, newStatus: boolean) =>
                     updateBingoArray(index, newStatus)
@@ -34,10 +75,21 @@ function Bingo() {
     ));
 
     function updateBingoArray(index: number, newStatus: boolean) {
-        const ret = bingoArrayState.slice(0);
-        ret[index] = newStatus;
-        setBingoArray(ret);
-        localStorage.setItem("bingo", JSON.stringify(ret));
+        const ret = bingoArrayV2.slice(0);
+        ret[index][1] = newStatus;
+        setBingoArrayV2(ret);
+        localStorage.setItem("bingoV2", JSON.stringify(ret));
+    }
+
+    function copyBingoPrompts(): string {
+        let string: string = "";
+
+        // https://devsarticles.com/react-copy-to-clipboard
+        bingoArrayV2.forEach((val) => (string += textList.indexOf(val[0])));
+        // bingoArrayV2.forEach(val => (textList.includes(val[0]) ? string += textList.indexOf(val[0]) : string += "-2"));
+        console.log(string);
+
+        return string;
     }
 
     return (
@@ -46,19 +98,29 @@ function Bingo() {
                 <img src={banner} className="image-boundary" alt="" />
             </a>
             <div className="parent">{bingoArrayMapped}</div>
-            <button
-                type="button"
-                onClick={() => {
-                    setBingoArray(new Array(25).fill(false));
-                    localStorage.setItem(
-                        "bingo",
-                        JSON.stringify(new Array(25).fill(false))
-                    );
-                }}
-                style={{ marginTop: "5px", color:"white" }}
-            >
-                Reset
-            </button>
+            <div style={{ marginTop: "10px" }}>
+                <button
+                    type="button"
+                    onClick={() => {
+                        setBingoArrayV2(() => {
+                            const arr = bingoArrayV2.slice(0);
+                            for(let i = 0; i < arr.length; ++i)
+                                arr[i][1] = false;
+                            return arr;
+                        });
+                    }}
+                >
+                    Limpar Bingo
+                </button>
+                <button
+                    type="button"
+                    onClick={() => {
+                        setBingoArrayV2(generateArray());
+                    }}
+                >
+                    Novo Bingo
+                </button>
+            </div>
             <div style={{ marginTop: "5px", fontSize: "6px" }}>
                 Todos os direitos reservados aos autores dos logótipos.
                 <br />
