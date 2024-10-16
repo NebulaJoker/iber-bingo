@@ -31,7 +31,7 @@ export const textList = [
     "Palavras japonesas não ironicamente",
     "Cosplay engraçado fora da caixa",
     "Jesus",
-    "Grupo grande de alguma coisa popular"
+    "Grupo grande de alguma coisa popular",
 ];
 
 export const squareCount = 25;

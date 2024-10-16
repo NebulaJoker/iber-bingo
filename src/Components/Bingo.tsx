@@ -45,7 +45,7 @@ function Bingo() {
             if (
                 bingoArray.filter(
                     (val) => textList.includes(val[0]) && val[1] === !!val[1]
-                ).length !== 25
+                ).length !== 24
             )
                 throw "Invalid backup array - resetting";
 
@@ -53,13 +53,15 @@ function Bingo() {
         } catch {
             return generateArray();
         }
-
-        return generateArray();
     }
 
     const [bingoArrayV2, setBingoArrayV2] = useState<[string, boolean][]>(
         loadLogicFromStorage()
     );
+
+    const [exportBingo, setBingo] = useState<string>("");
+
+    // useEffect(() => {localStorage.setItem("bingoV2", JSON.stringify(bingoArrayV2))}, [bingoArrayV2])
 
     const bingoArrayMapped = bingoArrayV2.map((element, index) => (
         <div key={index} className={"div" + index + " inGrid"}>
@@ -82,12 +84,13 @@ function Bingo() {
     }
 
     function copyBingoPrompts(): string {
-        let string: string = "";
+        let string: string = "[";
 
         // https://devsarticles.com/react-copy-to-clipboard
-        bingoArrayV2.forEach((val) => (string += textList.indexOf(val[0])));
-        // bingoArrayV2.forEach(val => (textList.includes(val[0]) ? string += textList.indexOf(val[0]) : string += "-2"));
-        console.log(string);
+        bingoArrayV2.forEach(
+            (val) => (string += textList.indexOf(val[0]) + ",")
+        );
+        string = string.slice(0, -1).concat("]");
 
         return string;
     }
@@ -104,8 +107,9 @@ function Bingo() {
                     onClick={() => {
                         setBingoArrayV2(() => {
                             const arr = bingoArrayV2.slice(0);
-                            for(let i = 0; i < arr.length; ++i)
+                            for (let i = 0; i < arr.length; ++i)
                                 arr[i][1] = false;
+                            localStorage.setItem("bingoV2", JSON.stringify(arr))
                             return arr;
                         });
                     }}
@@ -119,6 +123,22 @@ function Bingo() {
                     }}
                 >
                     Novo Bingo
+                </button>
+                <input
+                    type="text"
+                    name=""
+                    id=""
+                    value={exportBingo}
+                    onChange={() => {}}
+                ></input>
+                <button
+                    type="button"
+                    onClick={() => setBingo(copyBingoPrompts())}
+                >
+                    Exportar Bingo
+                </button>
+                <button type="button" onClick={() => {}}>
+                    Importar Bingo
                 </button>
             </div>
             <div style={{ marginTop: "5px", fontSize: "6px" }}>
