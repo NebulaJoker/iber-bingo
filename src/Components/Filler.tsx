@@ -1,4 +1,4 @@
-export const textList = [
+export const textList :string[] = [
     "Cosplay de Zenless Zone Zero",
     "Alguém de trela a ser passeado",
     "Fotografias sem permissão",

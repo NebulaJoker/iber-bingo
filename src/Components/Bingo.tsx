@@ -61,8 +61,6 @@ function Bingo() {
 
     const [exportBingo, setBingo] = useState<string>("");
 
-    // useEffect(() => {localStorage.setItem("bingoV2", JSON.stringify(bingoArrayV2))}, [bingoArrayV2])
-
     const bingoArrayMapped = bingoArrayV2.map((element, index) => (
         <div key={index} className={"div" + index + " inGrid"}>
             <Square
@@ -95,6 +93,39 @@ function Bingo() {
         return string;
     }
 
+    function importBingoPrompts() {
+        try {
+            const arr: number[] = JSON.parse(exportBingo);
+
+            const unique: Set<number> = new Set(arr);
+
+            if (unique.size !== squareCount || arr[12] !== -1) throw "Under 25";
+
+            for (const num of unique) {
+                if (num < -1 || num >= textList.length) {
+                    throw "Out of bounds";
+                }
+            }
+
+            const arr2: [string, boolean][] = bingoArrayV2.slice(0);
+
+            for (let i = 0; i < squareCount; ++i) {
+                if (arr[i] === -1) {
+                    arr2[i][0] = "Cosplay que gostem (Free Spot)";
+                    arr2[i][1] = false;
+                } else {
+                    arr2[i][0] = textList[arr[i]];
+                    arr2[i][1] = false;
+                }
+            }
+
+            setBingoArrayV2(arr2);
+            localStorage.setItem("bingoV2", JSON.stringify(arr2));
+        } catch {
+            alert("O bingo é inválido.");
+        }
+    }
+
     return (
         <>
             <a href="https://www.iberanime.com/">
@@ -109,7 +140,10 @@ function Bingo() {
                             const arr = bingoArrayV2.slice(0);
                             for (let i = 0; i < arr.length; ++i)
                                 arr[i][1] = false;
-                            localStorage.setItem("bingoV2", JSON.stringify(arr))
+                            localStorage.setItem(
+                                "bingoV2",
+                                JSON.stringify(arr)
+                            );
                             return arr;
                         });
                     }}
@@ -124,22 +158,25 @@ function Bingo() {
                 >
                     Novo Bingo
                 </button>
-                <input
-                    type="text"
-                    name=""
-                    id=""
-                    value={exportBingo}
-                    onChange={() => {}}
-                ></input>
-                <button
-                    type="button"
-                    onClick={() => setBingo(copyBingoPrompts())}
-                >
-                    Exportar Bingo
-                </button>
-                <button type="button" onClick={() => {}}>
-                    Importar Bingo
-                </button>
+                <div>
+                    <input
+                        type="text"
+                        name=""
+                        id=""
+                        value={exportBingo}
+                        onChange={(event) => setBingo(event.target.value)}
+                    ></input>
+                    <div className="buttons"></div>
+                    <button
+                        type="button"
+                        onClick={() => setBingo(copyBingoPrompts())}
+                    >
+                        Exportar Bingo
+                    </button>
+                    <button type="button" onClick={() => importBingoPrompts()}>
+                        Importar Bingo
+                    </button>
+                </div>
             </div>
             <div style={{ marginTop: "5px", fontSize: "6px" }}>
                 Todos os direitos reservados aos autores dos logótipos.
