@@ -158,7 +158,7 @@ function Bingo() {
                 >
                     Novo Bingo
                 </button>
-                <div>
+                <div style={{ marginTop: "10px" }}>
                     <input
                         type="text"
                         name=""
@@ -166,16 +166,20 @@ function Bingo() {
                         value={exportBingo}
                         onChange={(event) => setBingo(event.target.value)}
                     ></input>
-                    <div className="buttons"></div>
-                    <button
-                        type="button"
-                        onClick={() => setBingo(copyBingoPrompts())}
-                    >
-                        Exportar Bingo
-                    </button>
-                    <button type="button" onClick={() => importBingoPrompts()}>
-                        Importar Bingo
-                    </button>
+                    <div className="buttons">
+                        <button
+                            type="button"
+                            onClick={() => setBingo(copyBingoPrompts())}
+                        >
+                            Exportar Bingo
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => importBingoPrompts()}
+                        >
+                            Importar Bingo
+                        </button>
+                    </div>
                 </div>
             </div>
             <div style={{ marginTop: "5px", fontSize: "6px" }}>
