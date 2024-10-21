@@ -13,7 +13,7 @@ export const textList :string[] = [
     "Pessoas a gravar TikToks num canto",
     // "Cosplay que gostem (Free Spot)",
     "Música de Pokémon ou Dragon Ball GT",
-    // IberAnime OPO exclusive
+    // Exponor exclusive
     "Meet de Cosplayers no círculo",
     '"O Cheiro" tradicional',
     "Pedaço de cosplay perdido no chão",
@@ -32,8 +32,18 @@ export const textList :string[] = [
     "Cosplay engraçado fora da caixa",
     "Jesus",
     "Grupo grande de alguma coisa popular",
+    // FIL Exclusive
+    "Cosplayers no Time",
+    "Meet de um jogo da Mihoyo",
+    "Cosplay de Genshin Impact",
+    "Cosplay de Honkai Star Rail",
+    "Cosplay de Honkai Impact 3rd"
 ];
 
 export const squareCount = 25;
+
+export const freeSpot = 12;
+
+export const freeSpotText = "Cosplay que gostem (Free Spot)";
 
 export const stamp = "https://www.iberanime.com/wp-content/uploads/2024/01/logo_iberanime.svg";
