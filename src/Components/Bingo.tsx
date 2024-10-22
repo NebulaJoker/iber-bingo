@@ -32,8 +32,6 @@ function Bingo() {
 
         bingoArray[freeSpot][0] = freeSpotText;
 
-        // localStorage.setItem("bingoV2", JSON.stringify(bingoArray));
-
         return bingoArray;
     }
 
@@ -77,7 +75,10 @@ function Bingo() {
         </div>
     ));
 
-    useEffect(() => localStorage.setItem("bingoV2", JSON.stringify(bingoArrayV2)), [bingoArrayV2]);
+    useEffect(
+        () => localStorage.setItem("bingoV2", JSON.stringify(bingoArrayV2)),
+        [bingoArrayV2]
+    );
 
     const importExportPrompt = (
         <div className="import-export">
@@ -120,7 +121,6 @@ function Bingo() {
         const ret = bingoArrayV2.slice(0);
         ret[index][1] = newStatus;
         setBingoArrayV2(ret);
-        // localStorage.setItem("bingoV2", JSON.stringify(ret));
     }
 
     function copyBingoPrompts(): string {
@@ -163,7 +163,6 @@ function Bingo() {
             }
 
             setBingoArrayV2(arr2);
-            // localStorage.setItem("bingoV2", JSON.stringify(arr2));
         } catch {
             alert("O bingo é inválido.");
         }
@@ -188,10 +187,6 @@ function Bingo() {
                             const arr = bingoArrayV2.slice(0);
                             for (let i = 0; i < arr.length; ++i)
                                 arr[i][1] = false;
-                            // localStorage.setItem(
-                            //     "bingoV2",
-                            //     JSON.stringify(arr)
-                            // );
                             return arr;
                         });
                     }}

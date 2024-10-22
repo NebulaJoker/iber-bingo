@@ -37,7 +37,11 @@ export const textList :string[] = [
     "Meet de um jogo da Mihoyo",
     "Cosplay de Genshin Impact",
     "Cosplay de Honkai Star Rail",
-    "Cosplay de Honkai Impact 3rd"
+    "Cosplay de Honkai Impact 3rd",
+    "Gastar demasiado na Artist Alley",
+    "Foto com um cosplayer",
+    "Uma fandom a falar alto",
+    "Cosplay claramente desconfortável"
 ];
 
 export const squareCount = 25;
