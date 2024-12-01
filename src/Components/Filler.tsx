@@ -1,4 +1,14 @@
-export const textList :string[] = [
+export const squareCount = 25;
+export const freeSpot = 12;
+export const freeSpotText = "Cosplay que gostem (Free Spot)";
+
+export const stamp =
+    "https://www.iberanime.com/wp-content/uploads/2024/01/logo_iberanime.svg";
+// export const stampLGW = 
+
+export const currentEvent = "LGW";
+
+export const textList: string[] = [
     "Cosplay de Zenless Zone Zero",
     "Alguém de trela a ser passeado",
     "Fotografias sem permissão",
@@ -11,10 +21,7 @@ export const textList :string[] = [
     '"Free Hugs"',
     "Cosplay de Miku País (qualquer país)",
     "Pessoas a gravar TikToks num canto",
-    // "Cosplay que gostem (Free Spot)",
     "Música de Pokémon ou Dragon Ball GT",
-    // Exponor exclusive
-    "Meet de Cosplayers no círculo",
     '"O Cheiro" tradicional',
     "Pedaço de cosplay perdido no chão",
     "Fursuit",
@@ -22,18 +29,10 @@ export const textList :string[] = [
     "Peça de roupa ahegao",
     "Voluntariado que quer ir para casa",
     "Alguém sentado no chão a comer noodles",
-    // IberAnime Exclusive
-    'André Manz a dizer "Sucesso!"',
-    // IberAnime Exclusive
-    "Selfie com a Mascote do IA",
-    // IberAnime Exclusive
-    "Ouvir o Para Para Dance fora do Para Para Dance",
     "Palavras japonesas não ironicamente",
     "Cosplay engraçado fora da caixa",
     "Jesus",
     "Grupo grande de alguma coisa popular",
-    // FIL Exclusive
-    "Cosplayers no Time",
     "Meet de um jogo da Mihoyo",
     "Cosplay de Genshin Impact",
     "Cosplay de Honkai Star Rail",
@@ -41,13 +40,23 @@ export const textList :string[] = [
     "Gastar demasiado na Artist Alley",
     "Foto com um cosplayer",
     "Uma fandom a falar alto",
-    "Cosplay claramente desconfortável"
+    "Cosplay claramente desconfortável",
+    "Cosplayers a vestir-se na casa de banho",
+    "Banca de artistas escondida",
+    "Pessoa sem cosplay mas com uma prop",
+    "K-Pop",
+
+    // LGW
+    'Alguém diz "Calma jovem"',
+
+    // FIL
+    "Cosplayers no Time",
 ];
 
-export const squareCount = 25;
+export const exponor: string[] = ["Meet de Cosplayers no círculo"];
 
-export const freeSpot = 12;
-
-export const freeSpotText = "Cosplay que gostem (Free Spot)";
-
-export const stamp = "https://www.iberanime.com/wp-content/uploads/2024/01/logo_iberanime.svg";
+export const iberanime: string[] = [
+    'André Manz a dizer "Sucesso!"',
+    "Selfie com a Mascote do IA",
+    "Ouvir o Para Para Dance fora do Para Para Dance",
+];

@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import "./Bingo.css";
-import { textList, squareCount, freeSpot, freeSpotText } from "./Filler";
-import banner from "../assets/bg.png";
+import {
+    textList,
+    squareCount,
+    freeSpot,
+    freeSpotText,
+    currentEvent,
+} from "./Filler";
+import banner from "../assets/lgw.png";
 import Square from "./Square";
+import Disclaimer from "./Disclaimer";
 
 function Bingo() {
     function shuffle(array: string[]): string[] {
@@ -37,6 +44,9 @@ function Bingo() {
 
     function loadLogicFromStorage(): [string, boolean][] {
         try {
+            if (localStorage.getItem("currentEvent") !== currentEvent)
+                throw "Not the current event - resetting";
+
             const bingoArray: [string, boolean][] = JSON.parse(
                 localStorage.getItem("bingoV2")!
             );
@@ -50,6 +60,7 @@ function Bingo() {
 
             return bingoArray;
         } catch {
+            localStorage.setItem("currentEvent", currentEvent);
             return generateArray();
         }
     }
@@ -71,7 +82,7 @@ function Bingo() {
                 cbFunc={(index: number, newStatus: boolean) =>
                     updateBingoArray(index, newStatus)
                 }
-            ></Square>
+            />
         </div>
     ));
 
@@ -102,18 +113,10 @@ function Bingo() {
                     </button>
                 </div>
             </div>
-            <div style={{ marginTop: "25px", fontSize: "10px" }}>
-                Todos os direitos reservados aos autores dos logótipos.
-                <br />
-                Não estou associado ao{" "}
-                <a href="https://www.iberanime.com/">IberAnime</a> de maneira
-                alguma.
-                <br />
-                Este bingo serve puramente para motivos recreativos.
-                <br />
-                Para contacto, posso ser encontrado em{" "}
-                <a href="https://www.instagram.com/nebbycos/">@nebbycos</a>.
-            </div>
+            <Disclaimer
+                eventName="Lisboa Games Week"
+                eventLink="https://www.lisboagamesweek.pt/"
+            />
         </div>
     );
 
@@ -170,7 +173,7 @@ function Bingo() {
 
     return (
         <>
-            <a href="https://www.iberanime.com/">
+            <a href="https://www.lisboagamesweek.pt/">
                 <img src={banner} className="image-boundary" alt="" />
             </a>
             {importExportToggle ? (

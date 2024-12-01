@@ -1,3 +1,7 @@
+a{
+    color: red !important;
+}
+
 button {
     color: "white";
     border: 2px solid rgba(255, 255, 255, 0.65) !important;
@@ -90,6 +94,11 @@ button:not(:last-child) {
     z-index: 3;
     width: 75%;
     height: 75%;
+}
+
+.lgw{
+    width: 90%;
+    height: 90%;
 }
 
 

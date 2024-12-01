@@ -1,5 +1,7 @@
-import { stamp } from "./Filler";
+// import { stampLGW as stamp } from "./Filler";
+// import { stamp as stamp } from "./Filler";
 import "./Bingo.css";
+import stamp from "../assets/stampLGW.png";
 
 function Square({
     text,
@@ -20,7 +22,7 @@ function Square({
         return (
             <div className="square">
                 <div className="ticked" onClick={() => completeSquare(false)}>
-                    <img src={stamp} className="stamp" alt="" />
+                    <img src={stamp} className={"stamp " + "lgw"} alt="" />
                 </div>
                 <div className="blur-text text-content">{text}</div>
             </div>
